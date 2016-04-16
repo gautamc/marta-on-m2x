@@ -1,0 +1,125 @@
+<div class="row">
+
+  <div class="col-lg-4">
+
+    <form class="form-horizontal" role="form" name="searchForm" ng-submit="run_search($event,search);">
+
+      <div class="row">
+        <div class="col-lg-12" style="margin-bottom:10px;">
+          <input
+             type="text"
+             ng-model="search.routePrefix"
+             placeholder="Search for a route"
+             typeahead="route for route in getRoutes($viewValue)"
+             typeahead-loading="loadingRoutes"
+             class="form-control"
+             style="float:left;width:95%;">
+          <i
+             ng-show="loadingRoutes"
+             class="glyphicon glyphicon-refresh"
+             style="float:left;margin-top:5px;margin-left:5px;">
+          </i>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-12" style="margin-top:10px;">
+          <input type="submit" class="btn btn-primary" value="Search" />
+          <a ng-href="#" ng-click="clear_search_form($event)">Clear</a>
+        </div>
+      </div>
+
+      <div class="row" style="margin-top:10px;height:20px;">
+        <div class="col-lg-12">
+          <div class="progress progress-striped active" ng-show="loading">
+            <div
+               class="progress-bar"
+               role="progressbar"
+               aria-valuenow="100"
+               aria-valuemin="0"
+               aria-valuemax="100"
+               style="width: 100%;">
+              Loading...
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </form>
+  </div>
+
+  <div class="col-lg-8">
+
+    <h4>Transit System Overview:</h4>
+
+    <h2>Total Routes:
+      &nbsp;
+      {{stats.total_Routes}}
+    </h2>
+
+    <h2>Total Buses:
+      &nbsp;
+      {{stats.total_buses}}
+    </h2>
+
+    <h2>Total Bus stops:
+      &nbsp;
+      {{stats.total_bus_stops}}
+    </h2>
+  </div>
+
+</div>
+
+<div class="row">
+
+  <div class="col-lg-12">
+
+    <div class="panel panel-success">
+
+      <div class="panel-heading">
+        <h4 class="panel-title">Bus Stop Arrival times</h4>
+      </div>
+
+      <div class="panel-body">
+        <div
+           style="max-width: 250px; float: left;"
+           ng-repeat="startix in []|range:(bus_stops ? Math.ceil(bus_stops.length/20) : 0)">
+          <bars-in-circle dataset='bus_stops' startix='{{startix*20}}'></bars-in-circle>
+          <div id="tooltip"
+               style="position:absolute;height:25px;width:100px;background-color:black;color:white;padding:5px;display:none;">
+            tooltip
+          </div>
+          <bars-in-circle dataset=bus_stops startix='0'></bars-in-circle>
+        </div>
+      </div>
+    </div>
+
+    <p>
+      <ul class="list-unstyled">
+        <li ng-repeat="bus_stop in bus_stops">{{bus_stop}}</li>
+      </ul>
+    </p>
+
+  </div>
+
+  <!--
+  <div class="col-lg-8">
+
+    <div class="panel panel-success">
+      <div class="panel-heading">
+        <h4 class="panel-title">Commuter onboarding per bus stop</h4>
+      </div>
+      <div class="panel-body">
+        <bar-chart dataset='bus_stop_commuter_histogram'></bar-chart>
+        <div ng-repeat="year in yearwise">
+          {{ bus_stop_commuter_histogram.bus_stop }} => {{ bus_stop_commuter_histogram.commuter_count }}
+        </div>
+      </div>
+    </div>
+
+    <br /><br />
+
+  </div>
+  -->
+
+</div>

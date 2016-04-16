@@ -1,0 +1,53 @@
+<!doctype html>
+<html class="no-js" ng-app="marta-on-m2x">
+  <head>
+    <meta charset="utf-8">
+    <title>MARTA On M2X</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+    <!-- build:css styles/all.css -->
+    <link rel="stylesheet" href="styles/bootstrap.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+
+    <!-- build:js scripts/vendor/modernizr.js -->
+    <script src="bower_components/modernizr/modernizr.js"></script>
+    <!-- endbuild -->
+  </head>
+  <body>
+
+    <!--[if lt IE 10]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser.
+        Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <div class="container-fluid">
+
+      <div ng-view></div>
+
+      <div class="appbar">
+      </div>
+
+    </div>
+
+    <!-- build:js scripts/libraries.js -->
+    <script src="lib/science/science.js"></script>
+    <script src="lib/science/science.stats.js"></script>
+    <script src="bower_components/d3/d3.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <!-- endbuild -->
+
+    <!-- build:js({app,.tmp}) scripts/main.js -->
+    <script src="scripts/main.js"></script>
+    <script src="scripts/F/range.js"></script>
+    <script src="scripts/D/bar-chart-directive.js"></script>
+    <script src="scripts/D/bars-in-circle-directive.js"></script>
+    <script src="scripts/S/stats-service.js"></script>
+    <script src="scripts/C/home-ctrl.js"></script>
+    <!-- endbuild -->
+  </body>
+</html>
